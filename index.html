@@ -23,32 +23,27 @@
 </head>
 
 <body unresolved>
-  <google-map latitude="39.9060613" longitude="-75.1665" zoom="13"
-      api-key="YOUR_KEY" disable-default-ui>
-    <google-map-marker latitude="39.9060613" longitude="-75.1665"
-      title="Go Phillies!" draggable="true"></google-map-marker>
-  </google-map>
-  <google-map-directions
-      start-address="Philadelphia"
-      end-address="Atlantic City"
-      api-key="YOUR_KEY"></google-map-directions>
+  <template is="dom-bind">
+    <google-map map="{{map}}" latitude="39.9060613" longitude="-75.1665" zoom="13"
+        api-key="YOUR_KEY" disable-default-ui>
+      <google-map-marker latitude="39.9060613" longitude="-75.1665"
+        title="Go Phillies!" draggable="true"></google-map-marker>
+    </google-map>
+    <google-map-directions map="{{map}}"
+        start-address="{{start}}"
+        end-address="{{end}}"
+        api-key="YOUR_KEY"></google-map-directions>
 
-  <paper-card elevation="2"> <!-- elevation controls the amount of box shadow -->
-    <paper-icon-item>
-      <iron-icon icon="search" item-icon></iron-icon>
-      <paper-input label="Start address" value="Philadelphia"></paper-input>
-    </paper-icon-item>
-    <paper-icon-item>
-      <iron-icon icon="search" item-icon></iron-icon>
-      <paper-input label="End address" value="Atlantic City"></paper-input>
-    </paper-icon-item>
-  </<paper-card>
-
-  <script>
-    var gMap = document.querySelector('google-map');
-    gMap.addEventListener('api-load', function(e) {
-      document.querySelector('google-map-directions').map = this.map;
-    });
-  </script>
+    <paper-card elevation="2"> <!-- elevation controls the amount of box shadow -->
+      <paper-icon-item>
+        <iron-icon icon="search" item-icon></iron-icon>
+        <paper-input label="Start address" value="{{start}}"></paper-input>
+      </paper-icon-item>
+      <paper-icon-item>
+        <iron-icon icon="search" item-icon></iron-icon>
+        <paper-input label="End address" value="{{end}}"></paper-input>
+      </paper-icon-item>
+    </<paper-card>
+  </template>
 </body>
 </html>
